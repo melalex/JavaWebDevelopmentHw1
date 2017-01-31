@@ -30,7 +30,7 @@ public class BitChanger {
      * @see Integer#SIZE
      */
     public static int changeBit(int number, int pos, ChangeMode mode) throws IllegalArgumentException {
-        if (pos > Integer.SIZE) {
+        if (pos >= Integer.SIZE) {
             throw new IllegalArgumentException(String.format("Pos must be less than %d. Got %d",
                     Integer.SIZE, pos));
         }
