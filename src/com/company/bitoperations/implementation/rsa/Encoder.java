@@ -16,4 +16,8 @@ public class Encoder {
         BigInteger target = new BigInteger(source);
         return target.modPow(key.getE(), key.getN()).toByteArray();
     }
+
+    public BigInteger encode(BigInteger source) {
+        return source.modPow(key.getE(), key.getN());
+    }
 }

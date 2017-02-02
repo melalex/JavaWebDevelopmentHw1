@@ -13,7 +13,7 @@ public class RsaAlgorithm {
     private BigInteger p;
     private BigInteger q;
 
-    private RsaAlgorithm() {
+    public RsaAlgorithm() {
         p = BigInteger.probablePrime(BIT_LENGTH, new Random());
         q = BigInteger.probablePrime(BIT_LENGTH, new Random());
     }

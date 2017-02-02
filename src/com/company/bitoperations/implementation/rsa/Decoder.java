@@ -2,17 +2,18 @@ package com.company.bitoperations.implementation.rsa;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
-import java.util.Random;
 
 /**
  * Created by alexander on 01/02/17.
  */
 public class Decoder {
+    private static int FERMAT_UPPER_BOUND = 15;
+
     private BigInteger d;
     private PublicKey publicKey;
 
     Decoder(BigInteger p, BigInteger q) {
-        BigInteger fi = p.subtract(BigInteger.ONE).multiply(q.add(BigInteger.ONE));
+        BigInteger fi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
         BigInteger e = getE(fi);
 
         d = e.modInverse(fi);
@@ -28,14 +29,19 @@ public class Decoder {
         return target.modPow(d, publicKey.getN()).toByteArray();
     }
 
+    public BigInteger decode(BigInteger source) {
+        return source.modPow(d, publicKey.getN());
+    }
+
     private BigInteger getE(BigInteger fi) {
         SecureRandom random = new SecureRandom();
-        BigInteger e = BigInteger.valueOf(2);
+        BigInteger e;
 
-        int fermatNumber = random.nextInt(10);
+        int fermatNumber;
         do  {
-            e = e.pow(((int) Math.pow(2, fermatNumber))).add(BigInteger.ONE);
-        } while (fi.gcd(e).equals(BigInteger.ONE) && (fi.compareTo(e) > 0));
+            fermatNumber = random.nextInt(FERMAT_UPPER_BOUND);
+            e = BigInteger.valueOf(2).pow(((int) Math.pow(2, fermatNumber))).add(BigInteger.ONE);
+        } while (!e.gcd(fi).equals(BigInteger.ONE) || (fi.compareTo(e) < 0));
 
         return e;
     }
