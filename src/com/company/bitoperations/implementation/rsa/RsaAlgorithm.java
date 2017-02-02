@@ -1,6 +1,8 @@
 package com.company.bitoperations.implementation.rsa;
 
 
+import com.sun.istack.internal.NotNull;
+
 import java.math.BigInteger;
 import java.util.Random;
 
@@ -27,7 +29,7 @@ public class RsaAlgorithm {
         return new Decoder(p, q);
     }
 
-    public Encoder createEncoder(PublicKey key) {
+    public Encoder createEncoder(@NotNull PublicKey key) {
         return new Encoder(key);
     }
 }

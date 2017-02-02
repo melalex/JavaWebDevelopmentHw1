@@ -1,5 +1,7 @@
 package com.company.bitoperations.implementation.rsa;
 
+import com.sun.istack.internal.NotNull;
+
 import java.math.BigInteger;
 
 /**
@@ -12,7 +14,7 @@ public class Encoder {
         this.key = key;
     }
 
-    public byte[] encode(byte[] source) {
+    public byte[] encode(@NotNull byte[] source) {
         BigInteger target = new BigInteger(source);
         return target.modPow(key.getE(), key.getN()).toByteArray();
     }

@@ -1,5 +1,7 @@
 package com.company.bitoperations.implementation.rsa;
 
+import com.sun.istack.internal.NotNull;
+
 import java.math.BigInteger;
 
 /**
@@ -9,16 +11,16 @@ public class PublicKey {
     private final BigInteger E;
     private final BigInteger N;
 
-    PublicKey(BigInteger e, BigInteger n) {
+    PublicKey(@NotNull BigInteger e, @NotNull BigInteger n) {
         this.E = e;
         this.N = n;
     }
 
-    public BigInteger getE() {
+    BigInteger getE() {
         return E;
     }
 
-    public BigInteger getN() {
+    BigInteger getN() {
         return N;
     }
 }

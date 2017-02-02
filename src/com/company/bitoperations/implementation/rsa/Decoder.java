@@ -1,5 +1,7 @@
 package com.company.bitoperations.implementation.rsa;
 
+import com.sun.istack.internal.NotNull;
+
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
@@ -12,7 +14,7 @@ public class Decoder {
     private BigInteger d;
     private PublicKey publicKey;
 
-    Decoder(BigInteger p, BigInteger q) {
+    Decoder(@NotNull BigInteger p, @NotNull BigInteger q) {
         BigInteger fi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
         BigInteger e = getE(fi);
 
@@ -24,7 +26,7 @@ public class Decoder {
         return publicKey;
     }
 
-    public byte[] decode(byte[] source) {
+    public byte[] decode(@NotNull byte[] source) {
         BigInteger target = new BigInteger(source);
         return target.modPow(d, publicKey.getN()).toByteArray();
     }
