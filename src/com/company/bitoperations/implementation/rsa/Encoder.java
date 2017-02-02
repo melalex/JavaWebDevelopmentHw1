@@ -3,6 +3,7 @@ package com.company.bitoperations.implementation.rsa;
 import com.sun.istack.internal.NotNull;
 
 import java.math.BigInteger;
+import java.util.function.Function;
 
 /**
  * Created by alexander on 01/02/17.
@@ -14,12 +15,14 @@ public class Encoder {
         this.key = key;
     }
 
-    public byte[] encode(@NotNull byte[] source) {
-        BigInteger target = new BigInteger(source);
-        return target.modPow(key.getE(), key.getN()).toByteArray();
-    }
+    public Chunks encode(@NotNull byte[] source) {
+        int chunkSize = Integer.highestOneBit(key.getN().bitCount()) >> 3;
 
-    public BigInteger encode(BigInteger source) {
-        return source.modPow(key.getE(), key.getN());
+        Function<? super byte[], ? extends byte[]> function = b -> {
+            BigInteger target = new BigInteger(b);
+            return target.modPow(key.getE(), key.getN()).toByteArray();
+        };
+
+        return Chunks.createChunks(source, chunkSize, function);
     }
 }

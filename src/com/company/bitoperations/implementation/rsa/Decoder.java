@@ -4,6 +4,7 @@ import com.sun.istack.internal.NotNull;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.function.Function;
 
 /**
  * Created by alexander on 01/02/17.
@@ -26,13 +27,13 @@ public class Decoder {
         return publicKey;
     }
 
-    public byte[] decode(@NotNull byte[] source) {
-        BigInteger target = new BigInteger(source);
-        return target.modPow(d, publicKey.getN()).toByteArray();
-    }
+    public byte[] decode(@NotNull Chunks source) {
+        Function<? super byte[], ? extends byte[]> function = b -> {
+            BigInteger target = new BigInteger(b);
+            return target.modPow(d, publicKey.getN()).toByteArray();
+        };
 
-    public BigInteger decode(BigInteger source) {
-        return source.modPow(d, publicKey.getN());
+        return source.applyFunction(function).asByteArray();
     }
 
     private BigInteger getE(BigInteger fi) {
