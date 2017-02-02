@@ -1,5 +1,7 @@
-package com.company.bitoperations.implementation.rsa;
+package com.company.bitoperations.implementation.rsa.cryptosystem;
 
+import com.company.bitoperations.implementation.rsa.datastructures.Chunks;
+import com.company.bitoperations.implementation.rsa.datastructures.PublicKey;
 import com.sun.istack.internal.NotNull;
 
 import java.math.BigInteger;
@@ -7,11 +9,11 @@ import java.security.SecureRandom;
 import java.util.function.Function;
 
 /**
+ * Provides functionality of RSA cryptosystem
+ *
  * Created by alexander on 01/02/17.
  */
 public class Decoder {
-    private static int FERMAT_UPPER_BOUND = 15;
-
     private BigInteger d;
     private PublicKey publicKey;
 
@@ -27,6 +29,13 @@ public class Decoder {
         return publicKey;
     }
 
+    /**
+     * Decode source encoded by RSA algorithm
+     *
+     * @param source encoded message
+     * @return decoded bytes
+     * @see Encoder#encode(byte[])
+     */
     public byte[] decode(@NotNull Chunks source) {
         Function<? super byte[], ? extends byte[]> function = b -> {
             BigInteger target = new BigInteger(b);
@@ -40,10 +49,8 @@ public class Decoder {
         SecureRandom random = new SecureRandom();
         BigInteger e;
 
-        int fermatNumber;
         do  {
-            fermatNumber = random.nextInt(FERMAT_UPPER_BOUND);
-            e = BigInteger.valueOf(2).pow(((int) Math.pow(2, fermatNumber))).add(BigInteger.ONE);
+            e = BigInteger.probablePrime(fi.bitCount(), random);
         } while (!e.gcd(fi).equals(BigInteger.ONE) || (fi.compareTo(e) < 0));
 
         return e;

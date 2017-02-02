@@ -1,12 +1,10 @@
 package com.company.bitoperations.test;
 
-import com.company.bitoperations.implementation.rsa.Chunks;
-import com.company.bitoperations.implementation.rsa.Decoder;
-import com.company.bitoperations.implementation.rsa.Encoder;
+import com.company.bitoperations.implementation.rsa.datastructures.Chunks;
+import com.company.bitoperations.implementation.rsa.cryptosystem.Decoder;
+import com.company.bitoperations.implementation.rsa.cryptosystem.Encoder;
 import com.company.bitoperations.implementation.rsa.RsaAlgorithm;
 import org.junit.jupiter.api.Test;
-
-import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.*;
 

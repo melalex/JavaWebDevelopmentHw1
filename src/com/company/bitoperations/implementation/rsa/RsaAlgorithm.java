@@ -1,12 +1,19 @@
 package com.company.bitoperations.implementation.rsa;
 
 
+import com.company.bitoperations.implementation.rsa.cryptosystem.Decoder;
+import com.company.bitoperations.implementation.rsa.cryptosystem.Encoder;
+import com.company.bitoperations.implementation.rsa.datastructures.PublicKey;
 import com.sun.istack.internal.NotNull;
 
 import java.math.BigInteger;
 import java.util.Random;
 
 /**
+ * Works like Encoder and Decoder factory
+ * @see Decoder
+ * @see Encoder
+ *
  * Created by alexander on 31/01/17.
  */
 public class RsaAlgorithm {

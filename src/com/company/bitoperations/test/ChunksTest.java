@@ -1,6 +1,6 @@
 package com.company.bitoperations.test;
 
-import com.company.bitoperations.implementation.rsa.Chunks;
+import com.company.bitoperations.implementation.rsa.datastructures.Chunks;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,4 @@
-package com.company.bitoperations.implementation.rsa;
+package com.company.bitoperations.implementation.rsa.datastructures;
 
 import com.sun.istack.internal.NotNull;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
@@ -11,10 +11,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
+ * Data structure to store byte array in chunks
+ *
  * Created by alexander on 02/02/17.
  */
 public class Chunks {
-    private int chunkSize;
     private List<byte[]> chunks;
 
     private Chunks() {
@@ -34,10 +35,19 @@ public class Chunks {
         return chunks.stream().mapToInt(b -> b.length).reduce(0, (a, b) -> a + b);
     }
 
-    public static Chunks createChunks(@NotNull byte[] source, int chunkSize) {
+    public static Chunks createChunks(@NotNull byte[] source, int chunkSize) throws IllegalArgumentException {
         return createChunks(source, chunkSize, b -> b);
     }
 
+    /**
+     * Create's new Chunks object
+     *
+     * @param source byte array that should be divide on chunks
+     * @param chunkSize max size of each chunk
+     * @param function function that should be called on all chunks
+     * @return new Chunks object
+     * @throws IllegalArgumentException if chunkSize less than or equal to 0 ({@code chunkSize <= 0})
+     */
     public static Chunks createChunks(@NotNull byte[] source,
                                       int chunkSize,
                                       @NotNull Function<? super byte[], ? extends byte[]> function) throws IllegalArgumentException{
@@ -48,7 +58,6 @@ public class Chunks {
         int sourceLength = source.length;
         int chunksCount = (source.length + chunkSize - 1) / chunkSize;
 
-        newChunk.chunkSize = chunkSize;
         newChunk.chunks = IntStream.
                 range(0, chunksCount).
                 mapToObj(n -> {
@@ -67,6 +76,12 @@ public class Chunks {
         return newChunk;
     }
 
+    /**
+     * Apply function to all chunks
+     *
+     * @param function function that should be called on all chunks
+     * @return new Chunks object that store functions result
+     */
     public Chunks applyFunction(@NotNull Function<? super byte[], ? extends byte[]> function) {
         Chunks result = new Chunks();
         LinkedList<byte[]> newChunks = new LinkedList<>();

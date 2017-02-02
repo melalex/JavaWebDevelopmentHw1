@@ -1,5 +1,7 @@
-package com.company.bitoperations.implementation.rsa;
+package com.company.bitoperations.implementation.rsa.cryptosystem;
 
+import com.company.bitoperations.implementation.rsa.datastructures.Chunks;
+import com.company.bitoperations.implementation.rsa.datastructures.PublicKey;
 import com.sun.istack.internal.NotNull;
 
 import java.math.BigInteger;
@@ -15,6 +17,13 @@ public class Encoder {
         this.key = key;
     }
 
+    /**
+     * Encode source by RSA algorithm
+     *
+     * @param source message to encode
+     * @return encoded message
+     * @see Decoder#decode(Chunks)
+     */
     public Chunks encode(@NotNull byte[] source) {
         int chunkSize = Integer.highestOneBit(key.getN().bitCount()) >> 3;
 
