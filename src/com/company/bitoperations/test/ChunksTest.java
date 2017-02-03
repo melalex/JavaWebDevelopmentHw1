@@ -1,5 +1,6 @@
 package com.company.bitoperations.test;
 
+import com.company.bitoperations.implementation.multiplying.KaratsubaAlgorithm;
 import com.company.bitoperations.implementation.rsa.datastructures.Chunks;
 import org.junit.jupiter.api.Test;
 
@@ -32,6 +33,13 @@ class ChunksTest {
         for (int i = 0; i < ARRAY.length; i++) {
             assertEquals(ARRAY[i], chunks.getByte(i / CHUNK_SIZE, i % CHUNK_SIZE));
         }
+    }
+
+    @Test
+    void createChunksThrows() {
+        byte[] array = new byte[] {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        assertThrows(IllegalArgumentException.class, () -> Chunks.createChunks(array, -1));
+        assertThrows(IllegalArgumentException.class, () -> Chunks.createChunks(array, 0));
     }
 
     @Test

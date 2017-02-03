@@ -1,9 +1,7 @@
 package com.company.bitoperations.test;
 
-import com.company.bitoperations.implementation.EuclideanAlgorithm;
+import com.company.bitoperations.implementation.gsd.EuclideanAlgorithm;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by alexander on 31/01/17.

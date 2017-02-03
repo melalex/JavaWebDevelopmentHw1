@@ -1,4 +1,4 @@
-package com.company.bitoperations.implementation;
+package com.company.bitoperations.implementation.multiplying;
 
 import com.sun.istack.internal.NotNull;
 

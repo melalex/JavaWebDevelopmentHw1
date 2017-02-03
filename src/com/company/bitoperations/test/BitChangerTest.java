@@ -1,6 +1,6 @@
 package com.company.bitoperations.test;
 
-import com.company.bitoperations.implementation.BitChanger;
+import com.company.bitoperations.implementation.changer.BitChanger;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,8 +22,8 @@ class BitChangerTest {
         int expectedResult2 = 0b1000;
         int pos2 = 0;
 
-        int result1 = BitChanger.changeBit(number1, pos1, BitChanger.ChangeMode.ZERO);
-        int result2 = BitChanger.changeBit(number2, pos2, BitChanger.ChangeMode.ZERO);
+        int result1 = BitChanger.clearBit(number1, pos1);
+        int result2 = BitChanger.clearBit(number2, pos2);
 
         assert expectedResult1 == result1;
         assert expectedResult2 == result2;
@@ -39,8 +39,8 @@ class BitChangerTest {
         int expectedResult2 = 0b1001;
         int pos2 = 0;
 
-        int result = BitChanger.changeBit(number1, pos1, BitChanger.ChangeMode.ONE);
-        int result2 = BitChanger.changeBit(number2, pos2, BitChanger.ChangeMode.ONE);
+        int result = BitChanger.setBit(number1, pos1);
+        int result2 = BitChanger.setBit(number2, pos2);
 
         assert expectedResult1 == result;
         assert expectedResult2 == result2;
@@ -51,10 +51,8 @@ class BitChangerTest {
         int pos = -1;
         int number = 0;
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> BitChanger.changeBit(number, pos, BitChanger.ChangeMode.ONE)
-        );
+        assertThrows(IllegalArgumentException.class,() -> BitChanger.setBit(number, pos));
+        assertThrows(IllegalArgumentException.class,() -> BitChanger.clearBit(number, pos));
     }
 
     @Test
@@ -62,14 +60,9 @@ class BitChangerTest {
         int pos = Integer.SIZE + 1;
         int number = 0;
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> BitChanger.changeBit(number, pos, BitChanger.ChangeMode.ONE)
-        );
-
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> BitChanger.changeBit(number, Integer.SIZE, BitChanger.ChangeMode.ONE)
-        );
+        assertThrows(IllegalArgumentException.class,() -> BitChanger.setBit(number, pos));
+        assertThrows(IllegalArgumentException.class, () -> BitChanger.setBit(number, Integer.SIZE));
+        assertThrows(IllegalArgumentException.class, () -> BitChanger.clearBit(number, pos));
+        assertThrows(IllegalArgumentException.class, () -> BitChanger.clearBit(number, Integer.SIZE));
     }
 }

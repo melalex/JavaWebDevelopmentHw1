@@ -13,7 +13,7 @@ import java.util.function.Function;
 public class Encoder {
     private PublicKey key;
 
-    Encoder(PublicKey key) {
+    public Encoder(PublicKey key) {
         this.key = key;
     }
 

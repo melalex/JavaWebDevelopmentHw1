@@ -1,4 +1,4 @@
-package com.company.bitoperations.implementation;
+package com.company.bitoperations.implementation.gsd;
 
 /**
  * Provides functionality to find GSD by binary Euclidean algorithm

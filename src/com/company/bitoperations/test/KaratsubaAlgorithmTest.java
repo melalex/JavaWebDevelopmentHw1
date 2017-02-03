@@ -1,10 +1,7 @@
 package com.company.bitoperations.test;
 
-import com.company.bitoperations.implementation.KaratsubaAlgorithm;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import com.company.bitoperations.implementation.multiplying.KaratsubaAlgorithm;
 import org.junit.jupiter.api.Test;
-
-import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 

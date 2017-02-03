@@ -1,9 +1,9 @@
-package com.company.bitoperations.implementation;
+package com.company.bitoperations.implementation.counter;
 
 /**
  * Created by alexander on 02/02/17.
  */
-public class BitsCount {
+public class BitCounter {
     public static int byteBitCount() {
         byte number = ~0;
         int count = 0;

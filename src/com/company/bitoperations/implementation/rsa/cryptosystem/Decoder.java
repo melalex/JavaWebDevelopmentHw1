@@ -17,7 +17,7 @@ public class Decoder {
     private BigInteger d;
     private PublicKey publicKey;
 
-    Decoder(@NotNull BigInteger p, @NotNull BigInteger q) {
+    public Decoder(@NotNull BigInteger p, @NotNull BigInteger q) {
         BigInteger fi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
         BigInteger e = getE(fi);
 
