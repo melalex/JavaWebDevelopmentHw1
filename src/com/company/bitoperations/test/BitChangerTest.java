@@ -60,7 +60,7 @@ class BitChangerTest {
         int pos = Integer.SIZE + 1;
         int number = 0;
 
-        assertThrows(IllegalArgumentException.class,() -> BitChanger.setBit(number, pos));
+        assertThrows(IllegalArgumentException.class, () -> BitChanger.setBit(number, pos));
         assertThrows(IllegalArgumentException.class, () -> BitChanger.setBit(number, Integer.SIZE));
         assertThrows(IllegalArgumentException.class, () -> BitChanger.clearBit(number, pos));
         assertThrows(IllegalArgumentException.class, () -> BitChanger.clearBit(number, Integer.SIZE));
