@@ -5,26 +5,46 @@ package com.room414.homework1.counter;
  */
 public class BitCounter {
     public static int byteBitCount() {
-        byte number = ~0;
-        return bitCount(number);
+        byte number = 1;
+        int count = 1;
+
+        while ((number <<= 1) != 0) {
+            count ++;
+        }
+
+        return count;
     }
 
     public static int shortBitCount() {
-        short number = ~0;
-        return bitCount(number);
+        short number = 1;
+        int count = 1;
+
+        while ((number <<= 1) != 0) {
+            count ++;
+        }
+
+        return count;
     }
 
     public static int intBitCount() {
-        int number = ~0;
-        return bitCount(number);
+        int number = 1;
+        int count = 1;
+
+        while ((number <<= 1) != 0) {
+            count ++;
+        }
+
+        return count;
     }
 
     public static int longBitCount() {
-        long number = ~0L;
-        return bitCount(number);
-    }
+        long number = 1;
+        int count = 1;
 
-    private static int bitCount(long number) {
-        return (int) (number & -number);
+        while ((number <<= 1) != 0) {
+            count ++;
+        }
+
+        return count;
     }
 }

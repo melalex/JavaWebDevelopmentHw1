@@ -15,7 +15,7 @@ class BitChangerTest {
     void testSetToZeroNormalBehavior() {
         int number1 = 0b1100;
         int expectedResult1 = 0b1000;
-        int pos1 = 3;
+        int pos1 = 2;
 
         int number2 = 0b1001;
         int expectedResult2 = 0b1000;
@@ -32,7 +32,7 @@ class BitChangerTest {
     void testSetToOneNormalBehavior() {
         int number1 = 0b1000;
         int expectedResult1 = 0b1100;
-        int pos1 = 3;
+        int pos1 = 2;
 
         int number2 = 0b1000;
         int expectedResult2 = 0b1001;
