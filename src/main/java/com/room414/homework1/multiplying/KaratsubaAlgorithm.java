@@ -12,6 +12,10 @@ public class KaratsubaAlgorithm {
     private static final int BASE = 10;
     private static final char SIGN_CHAR = '-';
 
+    private KaratsubaAlgorithm() {
+
+    }
+
     /**
      * Parses the string argument as array of digits in reverse order
      *
@@ -20,7 +24,7 @@ public class KaratsubaAlgorithm {
      * @return array representation of number
      * @throws IllegalArgumentException if number contains non-numeric value
      */
-    private static int[] arrayFromString(String number, int size) throws IllegalArgumentException {
+    private static int[] arrayFromString(String number, int size) {
         int numberLength = number.length();
         int[] result = new int[size];
         int numericalValue;
@@ -45,27 +49,30 @@ public class KaratsubaAlgorithm {
      * @return result of multiplying
      * @throws IllegalArgumentException if a or b contains non-numeric value
      */
-    public static String multiply(String a, String b) throws IllegalArgumentException {
+    public static String multiply(String a, String b) {
         boolean isNegative = false;
+        String unsignedA = a;
+        String unsignedB = b;
+
         if (a.startsWith("-") && b.startsWith("-")) {
-           a = a.substring(1);
-           b = b.substring(1);
+            unsignedA = a.substring(1);
+            unsignedB = b.substring(1);
         } else if (a.startsWith("-")) {
             isNegative = true;
-            a = a.substring(1);
+            unsignedA = a.substring(1);
         } else if (b.startsWith("-")) {
             isNegative = true;
-            b = b.substring(1);
+            unsignedB = b.substring(1);
         }
 
-        int maxSize = Math.max(a.length(), b.length());
+        int maxSize = Math.max(unsignedA.length(), unsignedB.length());
 
         if ((maxSize & (maxSize - 1)) != 0) {
             maxSize = Integer.highestOneBit(maxSize) << 1;
         }
 
-        int[] firstParameter = arrayFromString(a, maxSize);;
-        int[] secondParameter = arrayFromString(b, maxSize);
+        int[] firstParameter = arrayFromString(unsignedA, maxSize);
+        int[] secondParameter = arrayFromString(unsignedB, maxSize);
 
         int[] result = karatsubaMultiply(firstParameter, secondParameter);
         result = normalize(result);

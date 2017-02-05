@@ -7,6 +7,10 @@ package com.room414.homework1.gsd;
  */
 public class EuclideanAlgorithm {
 
+    private EuclideanAlgorithm() {
+
+    }
+
     /**
      * Finds GSD of a and b
      *
@@ -39,7 +43,7 @@ public class EuclideanAlgorithm {
         }
 
         if (((a & 0b1) == 0b0) && ((b & 0b1) == 0b0)) {
-            return 2 * binaryGcdAlgorithm(a >> 1, b >> 1);
+            return binaryGcdAlgorithm(a >> 1, b >> 1) << 1;
         }
 
         if (((a & 0b1) == 0b0) && ((b & 0b1) != 0b0)) {

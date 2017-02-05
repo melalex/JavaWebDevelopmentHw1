@@ -4,6 +4,11 @@ package com.room414.homework1.counter;
  * Created by alexander on 02/02/17.
  */
 public class BitCounter {
+
+    private BitCounter() {
+
+    }
+
     public static int byteBitCount() {
         byte number = 1;
         int count = 1;
