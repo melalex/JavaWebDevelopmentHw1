@@ -1,7 +1,6 @@
-package com.room414.rsa.datastructures;
+package com.room414.homework1.rsa.datastructures;
 
-import com.room414.rsa.cryptosystem.Encoder;
-import com.sun.istack.internal.NotNull;
+import com.room414.homework1.rsa.cryptosystem.Encoder;
 
 import java.math.BigInteger;
 
@@ -15,7 +14,7 @@ public class PublicKey {
     private final BigInteger E;
     private final BigInteger N;
 
-    public PublicKey(@NotNull BigInteger e, @NotNull BigInteger n) {
+    public PublicKey(BigInteger e, BigInteger n) {
         this.E = e;
         this.N = n;
     }

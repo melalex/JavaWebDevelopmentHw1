@@ -1,8 +1,7 @@
-package com.room414.rsa.cryptosystem;
+package com.room414.homework1.rsa.cryptosystem;
 
-import com.room414.rsa.datastructures.Chunks;
-import com.room414.rsa.datastructures.PublicKey;
-import com.sun.istack.internal.NotNull;
+import com.room414.homework1.rsa.datastructures.Chunks;
+import com.room414.homework1.rsa.datastructures.PublicKey;
 
 import java.math.BigInteger;
 import java.util.function.Function;
@@ -24,7 +23,7 @@ public class Encoder {
      * @return encoded message
      * @see Decoder#decode(Chunks)
      */
-    public Chunks encode(@NotNull byte[] source) {
+    public Chunks encode(byte[] source) {
         int chunkSize = Integer.highestOneBit(key.getN().bitCount()) >> 3;
 
         Function<? super byte[], ? extends byte[]> function = b -> {

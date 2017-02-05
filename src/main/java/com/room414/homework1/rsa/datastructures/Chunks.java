@@ -1,7 +1,5 @@
-package com.room414.rsa.datastructures;
+package com.room414.homework1.rsa.datastructures;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -35,7 +33,7 @@ public class Chunks {
         return chunks.stream().mapToInt(b -> b.length).reduce(0, (a, b) -> a + b);
     }
 
-    public static Chunks createChunks(@NotNull byte[] source, int chunkSize) throws IllegalArgumentException {
+    public static Chunks createChunks(byte[] source, int chunkSize) throws IllegalArgumentException {
         return createChunks(source, chunkSize, b -> b);
     }
 
@@ -48,9 +46,9 @@ public class Chunks {
      * @return new Chunks object
      * @throws IllegalArgumentException if chunkSize less than or equal to 0 ({@code chunkSize <= 0})
      */
-    public static Chunks createChunks(@NotNull byte[] source,
+    public static Chunks createChunks(byte[] source,
                                       int chunkSize,
-                                      @NotNull Function<? super byte[], ? extends byte[]> function) throws IllegalArgumentException{
+                                      Function<? super byte[], ? extends byte[]> function) throws IllegalArgumentException{
         if (chunkSize <= 0)
             throw new IllegalArgumentException("chunkSize must be greater then 0. Got " + chunkSize);
 
@@ -82,7 +80,7 @@ public class Chunks {
      * @param function function that should be called on all chunks
      * @return new Chunks object that store functions result
      */
-    public Chunks applyFunction(@NotNull Function<? super byte[], ? extends byte[]> function) {
+    public Chunks applyFunction(Function<? super byte[], ? extends byte[]> function) {
         Chunks result = new Chunks();
         LinkedList<byte[]> newChunks = new LinkedList<>();
         result.chunks = newChunks;
@@ -93,8 +91,15 @@ public class Chunks {
     }
 
     public byte[] asByteArray() {
-        ByteOutputStream stream = new ByteOutputStream(getByteCount());
-        chunks.forEach(stream::write);
-        return stream.getBytes();
+        byte[] result = new byte[getByteCount()];
+        int i = 0;
+
+        for (byte[] chunk : chunks) {
+            for (byte b : chunk) {
+                result[i++] = b;
+            }
+        }
+
+        return result;
     }
 }

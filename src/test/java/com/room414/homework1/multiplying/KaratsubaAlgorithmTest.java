@@ -1,4 +1,4 @@
-package com.room414.multiplying;
+package com.room414.homework1.multiplying;
 
 import org.junit.jupiter.api.Test;
 

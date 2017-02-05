@@ -1,4 +1,4 @@
-package com.room414.gsd;
+package com.room414.homework1.gsd;
 
 /**
  * Provides functionality to find GSD by binary Euclidean algorithm

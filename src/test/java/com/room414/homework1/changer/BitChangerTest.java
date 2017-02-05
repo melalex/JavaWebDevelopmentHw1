@@ -1,4 +1,4 @@
-package com.room414.changer;
+package com.room414.homework1.changer;
 
 import org.junit.jupiter.api.Test;
 

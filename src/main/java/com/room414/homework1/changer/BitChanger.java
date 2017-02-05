@@ -1,4 +1,4 @@
-package com.room414.changer;
+package com.room414.homework1.changer;
 
 /**
  * Provides functionality to changing bit value of int number

@@ -1,4 +1,4 @@
-package com.room414.counter;
+package com.room414.homework1.counter;
 
 /**
  * Created by alexander on 02/02/17.

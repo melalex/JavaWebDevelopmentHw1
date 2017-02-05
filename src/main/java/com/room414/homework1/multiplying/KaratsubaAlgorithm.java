@@ -1,6 +1,4 @@
-package com.room414.multiplying;
-
-import com.sun.istack.internal.NotNull;
+package com.room414.homework1.multiplying;
 
 import java.util.Arrays;
 
@@ -47,7 +45,7 @@ public class KaratsubaAlgorithm {
      * @return result of multiplying
      * @throws IllegalArgumentException if a or b contains non-numeric value
      */
-    public static String multiply(@NotNull String a, @NotNull String b) throws IllegalArgumentException {
+    public static String multiply(String a, String b) throws IllegalArgumentException {
         boolean isNegative = false;
         if (a.startsWith("-") && b.startsWith("-")) {
            a = a.substring(1);
@@ -98,7 +96,7 @@ public class KaratsubaAlgorithm {
      * @param b second multiplier
      * @return result of multiplying
      */
-    private static int[] karatsubaMultiply(@NotNull int[] a, @NotNull int[] b) {
+    private static int[] karatsubaMultiply(int[] a, int[] b) {
         int length = a.length;
         int halfLength = length / 2;
 
@@ -147,7 +145,7 @@ public class KaratsubaAlgorithm {
      * @param b second multiplier
      * @return unnormalized result of multiplying
      */
-    private static int[] nativeMultiply(@NotNull int[] a, @NotNull int[] b) {
+    private static int[] nativeMultiply(int[] a, int[] b) {
         int length = a.length;
         int[] result = new int[2 * length];
 
@@ -165,7 +163,7 @@ public class KaratsubaAlgorithm {
      * @param result value to normalize
      * @return normalized value
      */
-    private static int[] normalize(@NotNull int[] result) {
+    private static int[] normalize(int[] result) {
         int[] normResult = Arrays.copyOf(result, result.length);
 
         for (int i = 0; i < normResult.length - 1; i++) {

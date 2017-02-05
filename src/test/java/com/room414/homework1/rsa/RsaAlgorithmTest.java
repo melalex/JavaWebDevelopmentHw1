@@ -1,8 +1,8 @@
-package com.room414.rsa;
+package com.room414.homework1.rsa;
 
-import com.room414.rsa.datastructures.Chunks;
-import com.room414.rsa.cryptosystem.Decoder;
-import com.room414.rsa.cryptosystem.Encoder;
+import com.room414.homework1.rsa.datastructures.Chunks;
+import com.room414.homework1.rsa.cryptosystem.Decoder;
+import com.room414.homework1.rsa.cryptosystem.Encoder;
 
 import org.junit.jupiter.api.Test;
 

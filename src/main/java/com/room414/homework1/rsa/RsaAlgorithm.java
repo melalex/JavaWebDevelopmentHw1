@@ -1,10 +1,9 @@
-package com.room414.rsa;
+package com.room414.homework1.rsa;
 
 
-import com.room414.rsa.cryptosystem.Decoder;
-import com.room414.rsa.cryptosystem.Encoder;
-import com.room414.rsa.datastructures.PublicKey;
-import com.sun.istack.internal.NotNull;
+import com.room414.homework1.rsa.cryptosystem.Decoder;
+import com.room414.homework1.rsa.cryptosystem.Encoder;
+import com.room414.homework1.rsa.datastructures.PublicKey;
 
 import java.math.BigInteger;
 import java.util.Random;
@@ -36,7 +35,7 @@ public class RsaAlgorithm {
         return new Decoder(p, q);
     }
 
-    public Encoder createEncoder(@NotNull PublicKey key) {
+    public Encoder createEncoder(PublicKey key) {
         return new Encoder(key);
     }
 }

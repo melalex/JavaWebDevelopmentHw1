@@ -1,8 +1,7 @@
-package com.room414.rsa.cryptosystem;
+package com.room414.homework1.rsa.cryptosystem;
 
-import com.room414.rsa.datastructures.Chunks;
-import com.room414.rsa.datastructures.PublicKey;
-import com.sun.istack.internal.NotNull;
+import com.room414.homework1.rsa.datastructures.Chunks;
+import com.room414.homework1.rsa.datastructures.PublicKey;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -17,7 +16,7 @@ public class Decoder {
     private BigInteger d;
     private PublicKey publicKey;
 
-    public Decoder(@NotNull BigInteger p, @NotNull BigInteger q) {
+    public Decoder(BigInteger p, BigInteger q) {
         BigInteger fi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
         BigInteger e = getE(fi);
 
@@ -36,7 +35,7 @@ public class Decoder {
      * @return decoded bytes
      * @see Encoder#encode(byte[])
      */
-    public byte[] decode(@NotNull Chunks source) {
+    public byte[] decode(Chunks source) {
         Function<? super byte[], ? extends byte[]> function = b -> {
             BigInteger target = new BigInteger(b);
             return target.modPow(d, publicKey.getN()).toByteArray();

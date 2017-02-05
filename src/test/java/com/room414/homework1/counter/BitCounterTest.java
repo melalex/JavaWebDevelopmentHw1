@@ -1,4 +1,4 @@
-package com.room414.counter;
+package com.room414.homework1.counter;
 
 import org.junit.jupiter.api.Test;
 
